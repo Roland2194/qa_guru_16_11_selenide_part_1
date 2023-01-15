@@ -11,8 +11,10 @@ public class GithubTests {
     void searchSoftAssertions() {
         open("https://github.com/selenide/selenide");
         $("#wiki-tab").click();
-        $(".markdown-body").shouldHave(text("Soft assertions"));
-        $(".markdown-body").find(byText("Soft assertions")).click();
+        $("#wiki-pages-filter").click();
+        $("#wiki-pages-filter").setValue("SoftAssertions").pressEnter();
+        $(".filterable-active").shouldHave(text("SoftAssertions"));
+        $(byText("SoftAssertions")).click();
         $(".markdown-body").shouldHave(text("3. Using JUnit5 extend test class:"));
     }
 }
